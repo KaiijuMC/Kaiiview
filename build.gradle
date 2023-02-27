@@ -1,0 +1,37 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '8.0.0'
+    id 'java'
+}
+
+group 'dev.kugge'
+version '0.0.1'
+jar.enabled = false
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://hub.spigotmc.org/nexus/content/repositories/snapshots" }
+    maven { url "https://oss.sonatype.org/content/groups/public/" }
+    maven { url "https://papermc.io/repo/repository/maven-public/" }
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.19.3-R0.1-SNAPSHOT'
+    implementation 'org.bstats:bstats-bukkit:3.0.1'
+}
+
+processResources {
+    filter { String line -> line.replace('${version}', project.version.toString()) }
+}
+
+shadowJar {
+    archiveFileName = 'AFKViewDistance-' + project.version.toString() + '.jar'
+    relocate 'org.bstats', 'dev.kaiiju.afkviewdistance.lib.bstats'
+    relocate 'org.bstats.bukkit', 'dev.kaiiju.lib.bstats'
+}
+
+artifacts {
+    shadowJar
+}
+
+assemble.dependsOn(shadowJar)
