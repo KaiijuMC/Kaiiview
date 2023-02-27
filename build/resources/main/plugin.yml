@@ -1,6 +1,0 @@
-name: AFKViewDistance
-version: 0.0.1
-main: dev.kugge.afkviewdistance.AfkViewDistance
-api-version: 1.19
-authors: [kugge]
-description: View distance for AFK players.
