@@ -1,4 +1,4 @@
-# View Distance Tweaks
+# AFK View Distance
 
 ## About
 A Simple plugin that set a view/simulation distance to AFK players.
@@ -11,7 +11,7 @@ A Simple plugin that set a view/simulation distance to AFK players.
 # Please don't change this!
 version: 1
 
-# How many seconds between AFK checks (if enabled in world)
+# How many seconds between AFK checks
 check-frequency: 10
 # How many seconds before setting a player AFK
 duration: 120
