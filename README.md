@@ -32,8 +32,8 @@ view-distance: 10
 
 1. Clone AFKViewDistance and build
 ```bash
-git clone https://github.com/froobynooby/ViewDistanceTweaks
-cd ViewDistanceTweaks
+git clone https://github.com/KaiijuMC/AFKViewDistance.git
+cd AFKViewDistance
 ./gradlew clean build
 ```
 
