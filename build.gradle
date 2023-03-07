@@ -7,6 +7,9 @@ group 'dev.kugge'
 version '0.0.1'
 jar.enabled = false
 
+sourceCompatibility = 1.17
+targetCompatibility = 1.17
+
 repositories {
     mavenLocal()
     mavenCentral()
