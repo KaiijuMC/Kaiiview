@@ -44,6 +44,7 @@ public class AfkLimiter implements Runnable {
                 playerLastLocation.put(playerId, player.getLocation());
                 playerLastCheck.put(playerId, System.currentTimeMillis());
                 if (playerAfk.get(playerId)) {
+                    Bukkit.getLogger().info("Unset AFK Distances for player " + player.getName());
                     playerAfk.put(playerId, false);
                     if (viewEnabled) player.setViewDistance(player.getWorld().getViewDistance());
                     if (simulationEnabled) player.setSimulationDistance(player.getWorld().getSimulationDistance());
@@ -55,6 +56,7 @@ public class AfkLimiter implements Runnable {
 
             if (System.currentTimeMillis() - lastCheck >= duration * 1000L) {
                 if (!playerAfk.get(playerId)) {
+                    Bukkit.getLogger().info("Set AFK Distances for player " + player.getName());
                     playerAfk.put(playerId, true);
                     if (viewEnabled) player.setViewDistance(viewDistance);
                     if (simulationEnabled) player.setSimulationDistance(simulationDistance);
