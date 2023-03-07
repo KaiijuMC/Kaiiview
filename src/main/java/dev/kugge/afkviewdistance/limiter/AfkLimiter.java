@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 public class AfkLimiter implements Runnable {
     private final HashMap<UUID, Boolean> playerAfk = new HashMap<>();
@@ -17,6 +18,7 @@ public class AfkLimiter implements Runnable {
     private final int duration;
     private final int viewDistance;
     private final int simulationDistance;
+    private final Logger logger;
 
     public AfkLimiter(AfkViewDistance plugin) {
         this.viewEnabled = plugin.getConfig().getBoolean("view-distance-enable");
@@ -24,6 +26,7 @@ public class AfkLimiter implements Runnable {
         this.duration = plugin.getConfig().getInt("duration");
         this.viewDistance = plugin.getConfig().getInt("view-distance");
         this.simulationDistance = plugin.getConfig().getInt("simulation-distance");
+        this.logger = plugin.getLogger();
     }
 
     @Override
@@ -44,7 +47,7 @@ public class AfkLimiter implements Runnable {
                 playerLastLocation.put(playerId, player.getLocation());
                 playerLastCheck.put(playerId, System.currentTimeMillis());
                 if (playerAfk.get(playerId)) {
-                    Bukkit.getLogger().info("Unset AFK Distances for player " + player.getName());
+                    logger.info("Unset AFK Distances for player " + player.getName());
                     playerAfk.put(playerId, false);
                     if (viewEnabled) player.setViewDistance(player.getWorld().getViewDistance());
                     if (simulationEnabled) player.setSimulationDistance(player.getWorld().getSimulationDistance());
@@ -56,7 +59,7 @@ public class AfkLimiter implements Runnable {
 
             if (System.currentTimeMillis() - lastCheck >= duration * 1000L) {
                 if (!playerAfk.get(playerId)) {
-                    Bukkit.getLogger().info("Set AFK Distances for player " + player.getName());
+                    logger.info("Set AFK Distances for player " + player.getName());
                     playerAfk.put(playerId, true);
                     if (viewEnabled) player.setViewDistance(viewDistance);
                     if (simulationEnabled) player.setSimulationDistance(simulationDistance);
