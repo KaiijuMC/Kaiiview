@@ -17,12 +17,17 @@ import java.util.List;
 public class OptiCommand implements CommandExecutor {
 
     public static final String PERMISSION_RELOAD = "optikaii.command.reload";
+    public static final String PERMISSION_DUMP = "optikaii.command.dump";
     private final Optikaii plugin;
     private final ReloadCommand reloadCommand;
+    private final PlayerDumpCommand playerDumpCommand;
+    private final WorldDumpCommand worldDumpCommand;
 
     public OptiCommand(Optikaii plugin) {
         this.plugin = plugin;
         reloadCommand = new ReloadCommand(plugin);
+        playerDumpCommand = new PlayerDumpCommand();
+        worldDumpCommand = new WorldDumpCommand();
     }
 
     public static final TabCompleter tabCompleter = (sender,command,alias,args) -> {
@@ -30,7 +35,7 @@ public class OptiCommand implements CommandExecutor {
             return new ArrayList<>();
         }
         if (args.length == 1) {
-            List<String> possibleCompletions = new ArrayList<>(Arrays.asList("reload"));
+            List<String> possibleCompletions = new ArrayList<>(Arrays.asList("reload", "playerdump", "worlddump"));
             return StringUtil.copyPartialMatches(args[0], possibleCompletions, new ArrayList<>());
         }
         return new ArrayList<>();
@@ -46,10 +51,26 @@ public class OptiCommand implements CommandExecutor {
                     return true;
                 }
             }
+            if (args[0].equalsIgnoreCase("playerdump")) {
+                if (sender.hasPermission(PERMISSION_DUMP)) {
+                    return playerDumpCommand.onCommand(sender, command, cl, args);
+                } else {
+                    return true;
+                }
+            }
+            if (args[0].equalsIgnoreCase("worlddump")) {
+                if (sender.hasPermission(PERMISSION_DUMP)) {
+                    return worldDumpCommand.onCommand(sender, command, cl, args);
+                } else {
+                    return true;
+                }
+            }
         }
         sender.sendMessage(ChatColor.YELLOW + "Optikaii v" + plugin.getPluginMeta().getVersion());
         sender.sendMessage("");
-        sender.sendMessage("/opti reload");
+        sender.sendMessage("/opti reload: Reload plugin");
+        sender.sendMessage("/opti playerdump: Show player distances");
+        sender.sendMessage("/opti worlddump: Show world distances");
         return true;
     }
 }

@@ -1,12 +1,13 @@
-package dev.kugge.optikaii.limiter;
+package dev.kugge.optikaii.watcher;
 
 import dev.kugge.optikaii.Optikaii;
-import dev.kugge.optikaii.util.AfkConfig;import dev.kugge.optikaii.util.PlayerAfkStat;
+import dev.kugge.optikaii.config.AfkConfig;
+import dev.kugge.optikaii.util.PlayerAfkStat;
 
-import org.bukkit.Bukkit;
+import org.bukkit.Bukkit;import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.Collection;import java.util.HashMap;
+import java.util.UUID;import java.util.concurrent.ExecutionException;
 
 import static dev.kugge.optikaii.util.DistanceManager.setSimulationDistance;
 import static dev.kugge.optikaii.util.DistanceManager.setViewDistance;
@@ -15,9 +16,22 @@ public class AfkWatcher implements Runnable {
 
     private HashMap<UUID, PlayerAfkStat> statHashMap = new HashMap<>();
 
+    private final Optikaii plugin;
+
+    public AfkWatcher(Optikaii plugin) {
+        this.plugin = plugin;
+    }
+
     @Override
     public void run () {
-        Bukkit.getOnlinePlayers().forEach(player -> {
+        Collection<? extends Player> players;
+        // Get players sync
+        try {
+             players = Bukkit.getScheduler().callSyncMethod(this.plugin, Bukkit::getOnlinePlayers).get();
+        } catch (ExecutionException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        for (Player player : players) {
             UUID playerId = player.getUniqueId();
             PlayerAfkStat playerStat = this.statHashMap.get(playerId);
             AfkConfig afk = Optikaii.worldConfig.get(player.getWorld().getName()).afk();
@@ -34,8 +48,8 @@ public class AfkWatcher implements Runnable {
                 playerStat.setLastCheck(System.currentTimeMillis());
                 if (playerStat.isAfk()) {
                     playerStat.setAfk(false);
-                    if (afk.viewEnabled()) setViewDistance(player, player.getWorld().getViewDistance());
-                    if (afk.simulationEnabled()) setSimulationDistance(player, player.getWorld().getSimulationDistance());
+                    if (afk.view().enabled()) setViewDistance(this.plugin, player, player.getWorld().getViewDistance());
+                    if (afk.simulation().enabled()) setSimulationDistance(this.plugin, player, player.getWorld().getSimulationDistance());
                 }
                 return;
             }
@@ -43,9 +57,9 @@ public class AfkWatcher implements Runnable {
             // Same pos: set AFK if needed
             if (System.currentTimeMillis() - playerStat.getLastCheck() >= afk.duration() * 1000L && !playerStat.isAfk()) {
                 playerStat.setAfk(true);
-                if (afk.viewEnabled()) setViewDistance(player, afk.viewDistance());
-                if (afk.simulationEnabled()) setSimulationDistance(player, afk.simulationDistance());
+                if (afk.view().enabled()) setViewDistance(this.plugin, player, afk.view().distance());
+                if (afk.simulation().enabled()) setSimulationDistance(this.plugin, player, afk.simulation().distance());
             }
-        });
+        }
     }
 }

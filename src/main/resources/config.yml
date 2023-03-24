@@ -13,12 +13,14 @@ afk-check-frequency: 20
 # Per world configuration
 world:
   default:
-    # MSPT dynamic view distance
+    # MSPT dynamic distances
     mspt-settings:
       # Priority mode:
       # - SIMFIRST: Change simulation distance until it reached its minimum, then change view distance
       # - VIEWFIRST: Change view distance until it reached its minimum, then change simulation distance
       mode: "SIMFIRST"
+      # Mean duration used for MSPT calculations (in seconds)
+      mean-duration: 30
       # Simulation distance management
       simulation-distance:
         # Should we manage simulation distance ?
@@ -29,7 +31,7 @@ world:
         checks-decrease: 1
         # Below this value we'll increase simulation distance
         mspt-increase: 40
-        # Above this value we'll increase simulation distance
+        # Above this value we'll decrease simulation distance
         mspt-decrease: 45
         # Minimum simulation distance
         min-value: 8
@@ -45,13 +47,13 @@ world:
         checks-decrease: 1
         # Below this value we'll increase view distance
         mspt-increase: 40
-        # Above this value we'll increase view distance
+        # Above this value we'll decrease view distance
         mspt-decrease: 45
         # Minimum view distance
         min-value: 10
         # Maximum view distance
         max-value: 16
-    # AFK dynamic view distance
+    # AFK dynamic distances
     afk-settings:
       # Ticks before setting an user AFK
       duration: 120
