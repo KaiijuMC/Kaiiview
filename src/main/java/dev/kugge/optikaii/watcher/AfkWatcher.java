@@ -4,10 +4,13 @@ import dev.kugge.optikaii.Optikaii;
 import dev.kugge.optikaii.config.AfkConfig;
 import dev.kugge.optikaii.util.PlayerAfkStat;
 
-import org.bukkit.Bukkit;import org.bukkit.entity.Player;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
-import java.util.Collection;import java.util.HashMap;
-import java.util.UUID;import java.util.concurrent.ExecutionException;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 import static dev.kugge.optikaii.util.DistanceManager.setSimulationDistance;
 import static dev.kugge.optikaii.util.DistanceManager.setViewDistance;

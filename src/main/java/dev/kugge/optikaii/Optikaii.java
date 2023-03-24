@@ -3,11 +3,13 @@ package dev.kugge.optikaii;
 import dev.kugge.optikaii.command.OptiCommand;
 import dev.kugge.optikaii.watcher.AfkWatcher;
 import dev.kugge.optikaii.config.WorldConfig;
+import dev.kugge.optikaii.watcher.MsptWatcher;
 
-import dev.kugge.optikaii.watcher.MsptWatcher;import org.bstats.bukkit.Metrics;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.plugin.java.JavaPlugin;import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.util.HashMap;
 import java.util.logging.Logger;
