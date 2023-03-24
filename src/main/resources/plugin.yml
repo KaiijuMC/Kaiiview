@@ -1,6 +1,11 @@
-name: AFKViewDistance
+name: Optikaii
 version: ${version}
-main: dev.kugge.afkviewdistance.AfkViewDistance
+main: dev.kugge.optikaii.Optikaii
 api-version: 1.19
 authors: [kugge]
 description: View distance for AFK players.
+commands:
+  opti:
+    description: Optikaii command
+    usage: /<command>
+    permission: optikaii.command

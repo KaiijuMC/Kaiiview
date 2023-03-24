@@ -28,8 +28,8 @@ processResources {
 }
 
 shadowJar {
-    archiveFileName = 'AFKViewDistance-' + project.version.toString() + '.jar'
-    relocate 'org.bstats', 'dev.kaiiju.afkviewdistance.lib.bstats'
+    archiveFileName = 'Optikaii-' + project.version.toString() + '.jar'
+    relocate 'org.bstats', 'dev.kaiiju.optikaii.lib.bstats'
     relocate 'org.bstats.bukkit', 'dev.kaiiju.lib.bstats'
 }
 

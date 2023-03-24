@@ -1,39 +1,42 @@
-# AFK View Distance
+# Optikaii
 
 ## About
 A Simple plugin that set a view/simulation distance to AFK players.
 
 ## Config
 ```yaml
-# Configuration for AFK View Distance.
-# Github: https://github.com/KaiijuMC/AFKViewDistance
+# Configuration for Optikaii.
+# Github: https://github.com/KaiijuMC/Optikaii
 
 # Please don't change this!
 version: 1
 
-# How many seconds between AFK checks
-check-frequency: 10
-# How many seconds before setting a player AFK
-duration: 120
+# How many ticks between AFK checks
+afk-check-frequency: 20
 
-# Change simulation when a player is AFK
-simulation-distance-enable: true
-# AFK simulation distance value
-simulation-distance: 10
-
-# Change view when a player is AFK
-view-distance-enable: false
-# AFK view distance value
-view-distance: 10
-
+# Per world configuration
+world:
+  default:
+    # AFK settings
+    afk-settings:
+      # How many seconds before setting a player AFK
+      duration: 120
+      # Simulation distance settings
+      simulation-distance:
+        apply: true
+        value: 10
+      # View distance settings
+      view-distance:
+        apply: false
+        value: 10
 ```
 
 ## Building
 
-1. Clone AFKViewDistance and build
+1. Clone Optikaii and build
 ```bash
-git clone https://github.com/KaiijuMC/AFKViewDistance.git
-cd AFKViewDistance
+git clone https://github.com/KaiijuMC/Optikaii.git
+cd Optikaii
 ./gradlew clean build
 ```
 
