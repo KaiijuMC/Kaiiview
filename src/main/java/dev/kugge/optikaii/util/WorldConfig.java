@@ -1,7 +1,6 @@
 package dev.kugge.optikaii.util;
 
 import dev.kugge.optikaii.Optikaii;
-import dev.kugge.optikaii.command.OptiCommand;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -33,7 +32,6 @@ public record WorldConfig(boolean afkViewEnabled, boolean afkSimulationEnabled,
                                afkViewDistance,
                                afkSimulationDistance,
                                afkDuration);
-
     }
 
     private static ConfigurationSection getSection(FileConfiguration config, String worldName) {
