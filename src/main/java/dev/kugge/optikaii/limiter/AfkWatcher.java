@@ -1,8 +1,7 @@
 package dev.kugge.optikaii.limiter;
 
 import dev.kugge.optikaii.Optikaii;
-import dev.kugge.optikaii.util.PlayerAfkStat;
-import dev.kugge.optikaii.util.WorldConfig;
+import dev.kugge.optikaii.util.AfkConfig;import dev.kugge.optikaii.util.PlayerAfkStat;
 
 import org.bukkit.Bukkit;
 
@@ -21,7 +20,7 @@ public class AfkWatcher implements Runnable {
         Bukkit.getOnlinePlayers().forEach(player -> {
             UUID playerId = player.getUniqueId();
             PlayerAfkStat playerStat = this.statHashMap.get(playerId);
-            WorldConfig worldConfig = Optikaii.worldConfig.get(player.getWorld().getName());
+            AfkConfig afk = Optikaii.worldConfig.get(player.getWorld().getName()).afk();
 
             // Not in stats: Create player stats
             if (playerStat == null) {
@@ -35,17 +34,17 @@ public class AfkWatcher implements Runnable {
                 playerStat.setLastCheck(System.currentTimeMillis());
                 if (playerStat.isAfk()) {
                     playerStat.setAfk(false);
-                    if (worldConfig.afkViewEnabled()) setViewDistance(player, player.getWorld().getViewDistance());
-                    if (worldConfig.afkSimulationEnabled()) setSimulationDistance(player, player.getWorld().getSimulationDistance());
+                    if (afk.viewEnabled()) setViewDistance(player, player.getWorld().getViewDistance());
+                    if (afk.simulationEnabled()) setSimulationDistance(player, player.getWorld().getSimulationDistance());
                 }
                 return;
             }
 
             // Same pos: set AFK if needed
-            if (System.currentTimeMillis() - playerStat.getLastCheck() >= worldConfig.afkDuration() * 1000L && !playerStat.isAfk()) {
+            if (System.currentTimeMillis() - playerStat.getLastCheck() >= afk.duration() * 1000L && !playerStat.isAfk()) {
                 playerStat.setAfk(true);
-                if (worldConfig.afkViewEnabled()) setViewDistance(player, worldConfig.afkViewDistance());
-                if (worldConfig.afkSimulationEnabled()) setSimulationDistance(player, worldConfig.afkSimulationDistance());
+                if (afk.viewEnabled()) setViewDistance(player, afk.viewDistance());
+                if (afk.simulationEnabled()) setSimulationDistance(player, afk.simulationDistance());
             }
         });
     }
