@@ -29,9 +29,9 @@ public class WorldDumpCommand implements CommandExecutor {
         Bukkit.getWorlds().forEach(world ->
                                    sender.sendMessage(String.format(format,
                                                                     world.getViewDistance(),
-                                                                    Optikaii.worldConfig.get(world.getName()).mspt().viewDistance().max(),
+                                                                    Optikaii.worldConfig.get(world).mspt().viewDistance().max(),
                                                                     world.getSimulationDistance(),
-                                                                    Optikaii.worldConfig.get(world.getName()).mspt().simulationDistance().max(),
+                                                                    Optikaii.worldConfig.get(world).mspt().simulationDistance().max(),
                                                                     world.getName())));
         return true;
     }

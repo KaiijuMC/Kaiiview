@@ -18,7 +18,7 @@ public class ReloadCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         try {
-            this.plugin.reload();
+            plugin.reload();
             sender.sendMessage(ChatColor.YELLOW + "Optikaii reloaded.");
         } catch (Exception e) {
             sender.sendMessage(ChatColor.RED + "Something went wrong reloading Optikaii, see the console for more.");
