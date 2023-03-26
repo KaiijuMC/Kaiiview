@@ -1,7 +1,7 @@
 # Optikaii
 
 ## About
-A Simple plugin that set a view/simulation distance to AFK players.
+Dynamic view and simulation distances based on MSPT.
 
 ## Config
 ```yaml
