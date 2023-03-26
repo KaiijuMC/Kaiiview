@@ -14,13 +14,14 @@ import org.bukkit.scheduler.BukkitTask;
 
 import java.util.HashMap;
 import java.util.logging.Logger;
+import static dev.kugge.optikaii.util.DistanceManager.setStarterDistances;
 
 public class Optikaii extends JavaPlugin {
 
 
     private BukkitTask afkTaskId = null;
     private BukkitTask msptTaskId = null;
-    private static CoreConfig coreConfig;
+    public static CoreConfig coreConfig;
     public static Logger logger;
     public static HashMap<World, WorldConfig> worldConfig = new HashMap<>();
 
@@ -36,6 +37,7 @@ public class Optikaii extends JavaPlugin {
     public void load() {
         saveConfig();
         reload();
+        setStarterDistances(this, Bukkit.getWorlds());
     }
 
     public void reload() {

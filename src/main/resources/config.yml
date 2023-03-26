@@ -4,6 +4,9 @@
 # Please don't change this!
 version: 1
 
+# Print logs in console
+verbose: false
+
 # How many ticks between MSPT checks
 mspt-check-frequency: 200
 
@@ -49,7 +52,7 @@ world:
         max-value: 16
     # AFK dynamic distances
     afk-settings:
-      # Ticks before setting an user AFK
+      # Seconds before setting user AFK
       duration: 120
       # Simulation distance management
       simulation-distance:

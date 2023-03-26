@@ -3,7 +3,7 @@ package dev.kugge.optikaii.config;
 import org.bukkit.configuration.ConfigurationSection;
 
 public record MsptDistanceConfig(boolean enabled, int checksIncrease, int checksDecrease,
-                             int msptIncrease, int msptDecrease, int min, int max) {
+                                 int msptIncrease, int msptDecrease, int min, int max) {
     private static final String APPLY = "apply";
     private static final String CHECKS_INCREASE = "checks-increase";
     private static final String CHECKS_DECREASE = "checks-decrease";
