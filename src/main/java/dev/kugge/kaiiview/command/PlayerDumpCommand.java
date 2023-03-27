@@ -1,4 +1,4 @@
-package dev.kugge.optikaii.command;
+package dev.kugge.kaiiview.command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -23,12 +23,12 @@ public class PlayerDumpCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.AQUA + "Optikaii" + ChatColor.GRAY + "] PLAYERS");
+        sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.AQUA + "Kaiiview" + ChatColor.GRAY + "] PLAYERS");
         sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.LIGHT_PURPLE + "View: Current/Client/Max" + ChatColor.GRAY + " | "
                          + ChatColor.LIGHT_PURPLE + "Simulation: Current/Max" + ChatColor.GRAY + "]" + ChatColor.AQUA + " name");
         Bukkit.getOnlinePlayers().forEach(player ->
                                           sender.sendMessage(String.format(format,
-                                                                           player.getViewDistance(),
+                                                                           player.getSendViewDistance() - 1,
                                                                            player.getClientViewDistance(),
                                                                            player.getWorld().getViewDistance(),
                                                                            player.getSimulationDistance(),

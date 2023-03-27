@@ -1,25 +1,25 @@
-package dev.kugge.optikaii.watcher;
+package dev.kugge.kaiiview.watcher;
 
-import dev.kugge.optikaii.Optikaii;
-import dev.kugge.optikaii.config.AfkConfig;
-import dev.kugge.optikaii.util.PlayerAfkStat;
+import dev.kugge.kaiiview.Kaiiview;
+import dev.kugge.kaiiview.config.AfkConfig;
+import dev.kugge.kaiiview.util.PlayerAfkStat;
 
 import org.bukkit.entity.Player;
 
 import java.util.Collection;
 import java.util.HashMap;
 
-import static dev.kugge.optikaii.util.DistanceManager.setSimulationDistance;
-import static dev.kugge.optikaii.util.DistanceManager.setViewDistance;
-import static dev.kugge.optikaii.util.InfoGetter.getServerPlayers;
+import static dev.kugge.kaiiview.util.DistanceManager.setSimulationDistance;
+import static dev.kugge.kaiiview.util.DistanceManager.setViewDistance;
+import static dev.kugge.kaiiview.util.InfoGetter.getServerPlayers;
 
 public class AfkWatcher implements Runnable {
 
     private final HashMap<Player, PlayerAfkStat> statHashMap = new HashMap<>();
 
-    private final Optikaii plugin;
+    private final Kaiiview plugin;
 
-    public AfkWatcher(Optikaii plugin) {
+    public AfkWatcher(Kaiiview plugin) {
         this.plugin = plugin;
     }
 
@@ -28,7 +28,7 @@ public class AfkWatcher implements Runnable {
         Collection<? extends Player> players = getServerPlayers(plugin);
         for (Player player : players) {
             PlayerAfkStat playerStat = statHashMap.get(player);
-            AfkConfig afk = Optikaii.worldConfig.get(player.getWorld()).afk();
+            AfkConfig afk = Kaiiview.worldConfig.get(player.getWorld()).afk();
 
             // Not in stats: Create player stats
             if (playerStat == null) {

@@ -1,10 +1,10 @@
-package dev.kugge.optikaii;
+package dev.kugge.kaiiview;
 
-import dev.kugge.optikaii.command.OptiCommand;
-import dev.kugge.optikaii.config.CoreConfig;
-import dev.kugge.optikaii.watcher.AfkWatcher;
-import dev.kugge.optikaii.config.WorldConfig;
-import dev.kugge.optikaii.watcher.MsptWatcher;
+import dev.kugge.kaiiview.command.ViewCommand;
+import dev.kugge.kaiiview.config.CoreConfig;
+import dev.kugge.kaiiview.watcher.AfkWatcher;
+import dev.kugge.kaiiview.config.WorldConfig;
+import dev.kugge.kaiiview.watcher.MsptWatcher;
 
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
@@ -14,9 +14,9 @@ import org.bukkit.scheduler.BukkitTask;
 
 import java.util.HashMap;
 import java.util.logging.Logger;
-import static dev.kugge.optikaii.util.DistanceManager.setStarterDistances;
+import static dev.kugge.kaiiview.util.DistanceManager.setStarterDistances;
 
-public class Optikaii extends JavaPlugin {
+public class Kaiiview extends JavaPlugin {
 
 
     private BukkitTask afkTaskId = null;
@@ -31,7 +31,7 @@ public class Optikaii extends JavaPlugin {
         logger = getLogger();
         load();
         registerCommand();
-        new Metrics(this, 18043);
+        new Metrics(this, 18071);
     }
 
     public void load() {
@@ -63,7 +63,7 @@ public class Optikaii extends JavaPlugin {
     }
 
     private void registerCommand(){
-        getCommand("opti").setExecutor(new OptiCommand(this));
-        getCommand("opti").setTabCompleter(OptiCommand.tabCompleter);
+        getCommand("view").setExecutor(new ViewCommand(this));
+        getCommand("view").setTabCompleter(ViewCommand.tabCompleter);
     }
 }

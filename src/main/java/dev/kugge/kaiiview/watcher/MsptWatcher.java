@@ -1,24 +1,24 @@
-package dev.kugge.optikaii.watcher;
+package dev.kugge.kaiiview.watcher;
 
-import dev.kugge.optikaii.Optikaii;
-import dev.kugge.optikaii.config.MsptConfig;import dev.kugge.optikaii.util.WorldMsptStat;
+import dev.kugge.kaiiview.Kaiiview;
+import dev.kugge.kaiiview.config.MsptConfig;import dev.kugge.kaiiview.util.WorldMsptStat;
 
 import org.bukkit.World;
 import java.util.HashMap;
 import java.util.List;
 
-import static dev.kugge.optikaii.util.DistanceManager.setSimulationDistance;
-import static dev.kugge.optikaii.util.DistanceManager.setViewDistance;
-import static dev.kugge.optikaii.util.InfoGetter.getAverageTickTime;
-import static dev.kugge.optikaii.util.InfoGetter.getWorlds;
+import static dev.kugge.kaiiview.util.DistanceManager.setSimulationDistance;
+import static dev.kugge.kaiiview.util.DistanceManager.setViewDistance;
+import static dev.kugge.kaiiview.util.InfoGetter.getAverageTickTime;
+import static dev.kugge.kaiiview.util.InfoGetter.getWorlds;
 
 public class MsptWatcher implements Runnable {
 
-    private final Optikaii plugin;
+    private final Kaiiview plugin;
     private static final HashMap<World, WorldMsptStat> statDecrease = new HashMap<>();
     private static final HashMap<World, WorldMsptStat> statIncrease = new HashMap<>();
 
-    public MsptWatcher(Optikaii plugin) {
+    public MsptWatcher(Kaiiview plugin) {
         this.plugin = plugin;
     }
 
@@ -38,7 +38,7 @@ public class MsptWatcher implements Runnable {
     }
 
     private void manage(World world, long averageTickTime) {
-        MsptConfig config = Optikaii.worldConfig.get(world).mspt();
+        MsptConfig config = Kaiiview.worldConfig.get(world).mspt();
         manageDecrease(world, config, averageTickTime);
         manageIncrease(world, config, averageTickTime);
     }

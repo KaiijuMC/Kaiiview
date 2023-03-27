@@ -1,6 +1,6 @@
-package dev.kugge.optikaii.command;
+package dev.kugge.kaiiview.command;
 
-import dev.kugge.optikaii.Optikaii;
+import dev.kugge.kaiiview.Kaiiview;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -9,9 +9,9 @@ import org.bukkit.command.CommandSender;
 
 public class ReloadCommand implements CommandExecutor {
 
-    private Optikaii plugin;
+    private Kaiiview plugin;
 
-    public ReloadCommand(Optikaii plugin) {
+    public ReloadCommand(Kaiiview plugin) {
         this.plugin = plugin;
     }
 
@@ -19,9 +19,9 @@ public class ReloadCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         try {
             plugin.reload();
-            sender.sendMessage(ChatColor.YELLOW + "Optikaii reloaded.");
+            sender.sendMessage(ChatColor.YELLOW + "Kaiiview reloaded.");
         } catch (Exception e) {
-            sender.sendMessage(ChatColor.RED + "Something went wrong reloading Optikaii, see the console for more.");
+            sender.sendMessage(ChatColor.RED + "Something went wrong reloading Kaiiview, see the console for more.");
             e.printStackTrace();
         }
         return true;

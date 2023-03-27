@@ -28,8 +28,8 @@ processResources {
 }
 
 shadowJar {
-    archiveFileName = 'Optikaii-' + project.version.toString() + '.jar'
-    relocate 'org.bstats', 'dev.kaiiju.optikaii.lib.bstats'
+    archiveFileName = 'Kaiiview-' + project.version.toString() + '.jar'
+    relocate 'org.bstats', 'dev.kaiiju.kaiiview.lib.bstats'
     relocate 'org.bstats.bukkit', 'dev.kaiiju.lib.bstats'
 }
 

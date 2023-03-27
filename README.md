@@ -1,12 +1,12 @@
-# Optikaii
+# Kaiiview
 
 ## About
 Dynamic view and simulation distances based on MSPT.
 
 ## Config
 ```yaml
-# Configuration for Optikaii.
-# Github: https://github.com/KaiijuMC/Optikaii
+# Configuration for Kaiiview.
+# Github: https://github.com/KaiijuMC/Kaiiview
 
 # Please don't change this!
 version: 1
@@ -73,10 +73,10 @@ world:
 
 ## Building
 
-1. Clone Optikaii and build
+1. Clone Kaiiview and build
 ```bash
-git clone https://github.com/KaiijuMC/Optikaii.git
-cd Optikaii
+git clone https://github.com/KaiijuMC/Kaiiview.git
+cd Kaiiview
 ./gradlew clean build
 ```
 

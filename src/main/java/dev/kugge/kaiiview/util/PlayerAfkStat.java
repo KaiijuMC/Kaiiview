@@ -1,4 +1,4 @@
-package dev.kugge.optikaii.util;
+package dev.kugge.kaiiview.util;
 
 import org.bukkit.Location;
 

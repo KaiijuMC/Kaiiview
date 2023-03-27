@@ -1,4 +1,4 @@
-package dev.kugge.optikaii.config;
+package dev.kugge.kaiiview.config;
 
 import org.bukkit.configuration.file.FileConfiguration;
 

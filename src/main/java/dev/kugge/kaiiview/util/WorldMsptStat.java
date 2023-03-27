@@ -1,4 +1,4 @@
-package dev.kugge.optikaii.util;
+package dev.kugge.kaiiview.util;
 
 public class WorldMsptStat {
     private int checksPassedSimulation;

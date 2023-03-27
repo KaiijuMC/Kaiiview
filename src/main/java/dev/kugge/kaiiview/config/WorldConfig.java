@@ -1,6 +1,6 @@
-package dev.kugge.optikaii.config;
+package dev.kugge.kaiiview.config;
 
-import dev.kugge.optikaii.Optikaii;
+import dev.kugge.kaiiview.Kaiiview;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -13,7 +13,7 @@ public record WorldConfig(AfkConfig afk, MsptConfig mspt) {
     public static WorldConfig fromConfig(FileConfiguration config, String worldName) {
         ConfigurationSection section = getSection(config, worldName);
         ConfigurationSection defaultSection = getSection(config, DEFAULT);
-        Optikaii.logger.info("Loading " + worldName + " configuration. (" + section.getName() + ")");
+        Kaiiview.logger.info("Loading " + worldName + " configuration. (" + section.getName() + ")");
         return new WorldConfig(AfkConfig.fromConfig(section.getConfigurationSection(AFK),
                                                     defaultSection.getConfigurationSection(AFK)),
                                MsptConfig.fromConfig(section.getConfigurationSection(MSPT),

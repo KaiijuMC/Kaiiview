@@ -1,11 +1,11 @@
-name: Optikaii
+name: Kaiiview
 version: ${version}
-main: dev.kugge.optikaii.Optikaii
+main: dev.kugge.kaiiview.Kaiiview
 api-version: 1.19
 authors: [kugge]
 description: View distance for AFK players.
 commands:
   opti:
-    description: Optikaii command
+    description: Kaiiview command
     usage: /<command>
-    permission: optikaii.command
+    permission: kaiiview.command

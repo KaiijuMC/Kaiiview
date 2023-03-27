@@ -1,6 +1,6 @@
-package dev.kugge.optikaii.command;
+package dev.kugge.kaiiview.command;
 
-import dev.kugge.optikaii.Optikaii;
+import dev.kugge.kaiiview.Kaiiview;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -14,16 +14,16 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class OptiCommand implements CommandExecutor {
+public class ViewCommand implements CommandExecutor {
 
-    public static final String PERMISSION_RELOAD = "optikaii.command.reload";
-    public static final String PERMISSION_DUMP = "optikaii.command.dump";
-    private final Optikaii plugin;
+    public static final String PERMISSION_RELOAD = "kaiiview.command.reload";
+    public static final String PERMISSION_DUMP = "kaiiview.command.dump";
+    private final Kaiiview plugin;
     private final ReloadCommand reloadCommand;
     private final PlayerDumpCommand playerDumpCommand;
     private final WorldDumpCommand worldDumpCommand;
 
-    public OptiCommand(Optikaii plugin) {
+    public ViewCommand(Kaiiview plugin) {
         this.plugin = plugin;
         reloadCommand = new ReloadCommand(plugin);
         playerDumpCommand = new PlayerDumpCommand();
@@ -66,7 +66,7 @@ public class OptiCommand implements CommandExecutor {
                 }
             }
         }
-        sender.sendMessage(ChatColor.YELLOW + "Optikaii v" + plugin.getPluginMeta().getVersion());
+        sender.sendMessage(ChatColor.YELLOW + "Kaiiview v" + plugin.getPluginMeta().getVersion());
         sender.sendMessage("");
         sender.sendMessage("/opti reload: Reload plugin");
         sender.sendMessage("/opti playerdump: Show player distances");

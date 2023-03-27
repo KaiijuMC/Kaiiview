@@ -1,6 +1,6 @@
-package dev.kugge.optikaii.util;
+package dev.kugge.kaiiview.util;
 
-import dev.kugge.optikaii.Optikaii;
+import dev.kugge.kaiiview.Kaiiview;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class InfoGetter {
-    public static List<World> getWorlds(Optikaii plugin) {
+    public static List<World> getWorlds(Kaiiview plugin) {
         try {
             return Bukkit.getScheduler().callSyncMethod(plugin, Bukkit::getWorlds).get();
         } catch (ExecutionException | InterruptedException e) {
@@ -19,7 +19,7 @@ public class InfoGetter {
         }
     }
 
-    public static long getAverageTickTime(Optikaii plugin) {
+    public static long getAverageTickTime(Kaiiview plugin) {
         long[] tickTimes;
         try {
             tickTimes = Bukkit.getScheduler().callSyncMethod(plugin, Bukkit::getTickTimes).get();
@@ -31,7 +31,7 @@ public class InfoGetter {
         return totalTickTime / tickTimes.length / 1000000;
     }
 
-    public static Collection<? extends Player> getServerPlayers(Optikaii plugin) {
+    public static Collection<? extends Player> getServerPlayers(Kaiiview plugin) {
         try {
             return Bukkit.getScheduler().callSyncMethod(plugin, Bukkit::getOnlinePlayers).get();
         } catch (ExecutionException | InterruptedException e) {

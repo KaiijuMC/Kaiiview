@@ -1,6 +1,6 @@
-package dev.kugge.optikaii.command;
+package dev.kugge.kaiiview.command;
 
-import dev.kugge.optikaii.Optikaii;
+import dev.kugge.kaiiview.Kaiiview;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -23,15 +23,15 @@ public class WorldDumpCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.AQUA + "Optikaii" + ChatColor.GRAY + "] WORLDS");
+        sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.AQUA + "Kaiiview" + ChatColor.GRAY + "] WORLDS");
         sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.LIGHT_PURPLE + "View: Current/Max" + ChatColor.GRAY + " | "
                          + ChatColor.LIGHT_PURPLE + "Simulation: Current/Max" + ChatColor.GRAY + "]" + ChatColor.AQUA + " name");
         Bukkit.getWorlds().forEach(world ->
                                    sender.sendMessage(String.format(format,
                                                                     world.getViewDistance(),
-                                                                    Optikaii.worldConfig.get(world).mspt().viewDistance().max(),
+                                                                    Kaiiview.worldConfig.get(world).mspt().viewDistance().max(),
                                                                     world.getSimulationDistance(),
-                                                                    Optikaii.worldConfig.get(world).mspt().simulationDistance().max(),
+                                                                    Kaiiview.worldConfig.get(world).mspt().simulationDistance().max(),
                                                                     world.getName())));
         return true;
     }
